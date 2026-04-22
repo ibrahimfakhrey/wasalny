@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>وصلني بنها — Waslni Banha App Screens</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Cairo', sans-serif;
+            background: #0F0F1A;
+            color: #FFFFFF;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 40px 20px;
+            background: radial-gradient(ellipse at center top, #1A1A2E 0%, #0F0F1A 70%);
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 800px;
+            height: 800px;
+            background: radial-gradient(circle, rgba(245, 124, 0, 0.08) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .hero-logo {
+            width: 320px;
+            max-width: 80%;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 0 40px rgba(212, 168, 67, 0.3));
+            animation: floatLogo 4s ease-in-out infinite;
+        }
+
+        @keyframes floatLogo {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .hero-badge {
+            width: 160px;
+            margin-bottom: 30px;
+            border-radius: 16px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            background: linear-gradient(135deg, #F57C00, #D4A843);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 12px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #B0B0B0;
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 40px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            text-align: center;
+        }
+
+        .hero-stat .number {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: #F57C00;
+        }
+
+        .hero-stat .label {
+            font-size: 0.9rem;
+            color: #B0B0B0;
+        }
+
+        .scroll-hint {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s ease-in-out infinite;
+            color: #F57C00;
+            font-size: 1.5rem;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateX(-50%) translateY(0); }
+            50% { transform: translateX(-50%) translateY(10px); }
+        }
+
+        /* ===== NAV ===== */
+        .sticky-nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: rgba(15, 15, 26, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(245, 124, 0, 0.2);
+            padding: 0 20px;
+        }
+
+        .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            padding: 14px 0;
+        }
+
+        .nav-inner::-webkit-scrollbar { display: none; }
+
+        .nav-link {
+            color: #B0B0B0;
+            text-decoration: none;
+            white-space: nowrap;
+            font-size: 0.95rem;
+            font-weight: 600;
+            padding: 8px 20px;
+            border-radius: 20px;
+            transition: all 0.3s;
+            border: 1px solid transparent;
+        }
+
+        .nav-link:hover, .nav-link.active {
+            color: #F57C00;
+            background: rgba(245, 124, 0, 0.1);
+            border-color: rgba(245, 124, 0, 0.3);
+        }
+
+        /* ===== SECTIONS ===== */
+        .section {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            display: inline-block;
+            padding: 6px 20px;
+            background: rgba(245, 124, 0, 0.15);
+            border: 1px solid rgba(245, 124, 0, 0.3);
+            border-radius: 20px;
+            color: #F57C00;
+            font-size: 0.85rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 10px;
+        }
+
+        .section-header p {
+            color: #B0B0B0;
+            font-size: 1.05rem;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* ===== JOURNEY FLOW ===== */
+        .journey {
+            position: relative;
+        }
+
+        .journey-step {
+            display: flex;
+            align-items: flex-start;
+            gap: 40px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .journey-step:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* Timeline line */
+        .journey::before {
+            content: '';
+            position: absolute;
+            right: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(to bottom, #F57C00, #D4A843, #F57C00);
+            opacity: 0.3;
+        }
+
+        .step-number {
+            position: absolute;
+            right: calc(50% - 22px);
+            width: 44px;
+            height: 44px;
+            background: linear-gradient(135deg, #F57C00, #D4A843);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.1rem;
+            color: #0F0F1A;
+            z-index: 2;
+            box-shadow: 0 0 20px rgba(245, 124, 0, 0.4);
+        }
+
+        .step-phone {
+            flex: 0 0 280px;
+            position: relative;
+        }
+
+        .phone-frame {
+            background: #1E1E30;
+            border-radius: 32px;
+            padding: 12px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 124, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s, box-shadow 0.4s;
+            cursor: pointer;
+        }
+
+        .phone-frame:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(245, 124, 0, 0.15);
+        }
+
+        .phone-frame img {
+            width: 100%;
+            border-radius: 22px;
+            display: block;
+        }
+
+        .step-info {
+            flex: 1;
+            padding-top: 20px;
+        }
+
+        .step-info h3 {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 6px;
+            color: #F57C00;
+        }
+
+        .step-info h4 {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #D4A843;
+            margin-bottom: 16px;
+        }
+
+        .step-info p {
+            color: #B0B0B0;
+            line-height: 1.8;
+            font-size: 1rem;
+            margin-bottom: 20px;
+        }
+
+        .step-features {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .step-features li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #ccc;
+            font-size: 0.95rem;
+        }
+
+        .step-features li::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            background: #F57C00;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .flow-arrow {
+            text-align: center;
+            margin: -40px 0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .flow-arrow span {
+            display: inline-block;
+            color: #F57C00;
+            font-size: 2rem;
+            animation: pulseArrow 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseArrow {
+            0%, 100% { opacity: 0.4; }
+            50% { opacity: 1; }
+        }
+
+        /* ===== ADMIN GRID ===== */
+        .admin-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+            gap: 40px;
+        }
+
+        .admin-card {
+            background: #1E1E30;
+            border-radius: 24px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: transform 0.4s, box-shadow 0.4s;
+        }
+
+        .admin-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 124, 0, 0.1);
+        }
+
+        .admin-card-img {
+            padding: 16px 16px 0;
+        }
+
+        .admin-card-img img {
+            width: 100%;
+            border-radius: 16px;
+            display: block;
+        }
+
+        .admin-card-body {
+            padding: 24px;
+        }
+
+        .admin-card-body .card-number {
+            display: inline-block;
+            background: linear-gradient(135deg, #F57C00, #D4A843);
+            color: #0F0F1A;
+            font-weight: 800;
+            font-size: 0.85rem;
+            padding: 4px 14px;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .admin-card-body h3 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: #F57C00;
+        }
+
+        .admin-card-body h4 {
+            font-size: 0.95rem;
+            color: #D4A843;
+            margin-bottom: 12px;
+        }
+
+        .admin-card-body p {
+            color: #B0B0B0;
+            font-size: 0.9rem;
+            line-height: 1.7;
+        }
+
+        /* ===== MISSING SCREENS ===== */
+        .missing-section {
+            background: rgba(229, 57, 53, 0.08);
+            border: 1px solid rgba(229, 57, 53, 0.2);
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 60px;
+        }
+
+        .missing-section h3 {
+            color: #E53935;
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+
+        .missing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+
+        .missing-item {
+            background: rgba(229, 57, 53, 0.06);
+            border: 1px dashed rgba(229, 57, 53, 0.3);
+            border-radius: 12px;
+            padding: 14px 18px;
+            color: #B0B0B0;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .missing-item .dot {
+            width: 8px;
+            height: 8px;
+            background: #E53935;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* ===== LIGHTBOX ===== */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.92);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            animation: fadeIn 0.3s;
+        }
+
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-height: 90vh;
+            max-width: 90vw;
+            border-radius: 20px;
+            box-shadow: 0 0 60px rgba(245, 124, 0, 0.2);
+        }
+
+        .lightbox-close {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            background: rgba(245, 124, 0, 0.9);
+            color: #fff;
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 1.3rem;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .lightbox-caption {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 700;
+            background: rgba(30, 30, 48, 0.8);
+            padding: 10px 30px;
+            border-radius: 30px;
+            border: 1px solid rgba(245, 124, 0, 0.3);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            color: #666;
+            font-size: 0.85rem;
+        }
+
+        .footer a {
+            color: #F57C00;
+            text-decoration: none;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 900px) {
+            .journey::before { display: none; }
+            .step-number { display: none; }
+
+            .journey-step,
+            .journey-step:nth-child(even) {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .step-phone { flex: none; width: 260px; }
+            .step-info { padding-top: 10px; }
+            .step-features { align-items: center; }
+
+            .hero h1 { font-size: 2rem; }
+            .hero-stats { gap: 24px; }
+            .admin-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== LIGHTBOX ===== -->
+<div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
+    <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
+    <img id="lightbox-img" src="" alt="">
+    <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+    <img src="03_brand_assets/24_7_slogan_badge.png" alt="24/7 Badge" class="hero-badge">
+    <h1>وصلني بنها</h1>
+    <p>تطبيق توصيل بسيارات ملاكي في بنها، القليوبية — أقرب كابتن هيكلمك</p>
+
+    <div class="hero-stats">
+        <div class="hero-stat">
+            <div class="number">13</div>
+            <div class="label">شاشة العميل</div>
+        </div>
+        <div class="hero-stat">
+            <div class="number">5</div>
+            <div class="label">شاشة الأدمن</div>
+        </div>
+        <div class="hero-stat">
+            <div class="number">3</div>
+            <div class="label">لوحات التطبيق</div>
+        </div>
+    </div>
+
+    <div class="scroll-hint">&#x25BC;</div>
+</section>
+
+<!-- ===== NAV ===== -->
+<nav class="sticky-nav">
+    <div class="nav-inner">
+        <a href="#customer" class="nav-link active">رحلة العميل</a>
+        <a href="#admin" class="nav-link">لوحة تحكم الأدمن</a>
+        <a href="#missing" class="nav-link">الشاشات المتبقية</a>
+    </div>
+</nav>
+
+<!-- =========================================================== -->
+<!-- ===== CUSTOMER JOURNEY ===== -->
+<!-- =========================================================== -->
+<section class="section" id="customer">
+    <div class="section-header">
+        <span class="section-tag">Customer App</span>
+        <h2>رحلة العميل</h2>
+        <p>13 شاشة تغطي تجربة العميل الكاملة من فتح التطبيق وحتى تقييم الكابتن</p>
+    </div>
+
+    <div class="journey">
+
+        <!-- 1. Splash Screen -->
+        <div class="journey-step">
+            <div class="step-number">1</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/01_splash_screen.png', 'شاشة البداية — Splash Screen')">
+                    <img src="01_customer_app/01_splash_screen.png" alt="Splash Screen">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>شاشة البداية</h3>
+                <h4>Splash Screen</h4>
+                <p>أول شاشة يشوفها المستخدم لما يفتح التطبيق. تعرض اللوجو بتاع وصلني بنها مع الهوية البصرية الفخمة — خلفية سوداء، السيارة الذهبية، وشعار 24/7.</p>
+                <ul class="step-features">
+                    <li>لوجو وصلني بنها الذهبي</li>
+                    <li>شعار "أقرب كابتن هيكلمك"</li>
+                    <li>بادج خدمة 24/7</li>
+                    <li>انتقال تلقائي بعد ثانيتين</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 2. Onboarding -->
+        <div class="journey-step">
+            <div class="step-number">2</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/02_onboarding_flow.png', 'شاشات الترحيب — Onboarding')">
+                    <img src="01_customer_app/02_onboarding_flow.png" alt="Onboarding Flow">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>شاشات الترحيب</h3>
+                <h4>Onboarding Flow</h4>
+                <p>3 شاشات تعريفية تشرح للمستخدم الجديد إزاي يستخدم التطبيق — طلب التوصيلة، الكابتن الموثوق، والتقييم.</p>
+                <ul class="step-features">
+                    <li>3 سلايدات تعريفية</li>
+                    <li>رسومات توضيحية</li>
+                    <li>زرار "التالي" و "تخطي"</li>
+                    <li>مؤشر النقاط البرتقالي</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 3. Login & OTP -->
+        <div class="journey-step">
+            <div class="step-number">3</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/03_login_otp.png', 'تسجيل الدخول — Login & OTP')">
+                    <img src="01_customer_app/03_login_otp.png" alt="Login & OTP">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>تسجيل الدخول</h3>
+                <h4>Login & OTP Verification</h4>
+                <p>تسجيل الدخول برقم الموبايل المصري مع كود التحقق OTP. تصميم بسيط ومتوافق مع RTL.</p>
+                <ul class="step-features">
+                    <li>إدخال رقم الموبايل +20</li>
+                    <li>كود تحقق OTP</li>
+                    <li>إدخال الاسم للمستخدم الجديد</li>
+                    <li>تصميم RTL كامل</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 4. Customer Home -->
+        <div class="journey-step">
+            <div class="step-number">4</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/04_customer_home.png', 'الصفحة الرئيسية — Customer Home')">
+                    <img src="01_customer_app/04_customer_home.png" alt="Customer Home">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>الصفحة الرئيسية</h3>
+                <h4>Customer Home</h4>
+                <p>الشاشة الرئيسية فيها خريطة بنها مع موقع المستخدم، وبوتوم شيت فيه البحث والوجهات السريعة زي جامعة بنها ومحطة القطر.</p>
+                <ul class="step-features">
+                    <li>خريطة مباشرة مع موقع المستخدم</li>
+                    <li>بحث "عايز تروح فين؟"</li>
+                    <li>وجهات سريعة: جامعة بنها، محطة القطر</li>
+                    <li>آخر الرحلات السابقة</li>
+                    <li>زرار اتصل بينا</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 5. Set Pickup & Destination -->
+        <div class="journey-step">
+            <div class="step-number">5</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/05_set_pickup_destination.png', 'تحديد نقطة الانطلاق والوصول — Set Pickup')">
+                    <img src="01_customer_app/05_set_pickup_destination.png" alt="Set Pickup & Destination">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>تحديد نقطة الانطلاق والوصول</h3>
+                <h4>Set Pickup & Destination</h4>
+                <p>العميل بيحدد مكان الركوب ومكان الوصول على الخريطة. بن برتقالي للركوب وبن ذهبي للوصول.</p>
+                <ul class="step-features">
+                    <li>بن برتقالي = نقطة الركوب "من"</li>
+                    <li>بن ذهبي = نقطة الوصول "إلى"</li>
+                    <li>استخدم موقعي الحالي</li>
+                    <li>بحث بأسماء الأماكن في بنها</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 6. Trip Summary -->
+        <div class="journey-step">
+            <div class="step-number">6</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/06_trip_summary_request.png', 'ملخص الرحلة — Trip Summary')">
+                    <img src="01_customer_app/06_trip_summary_request.png" alt="Trip Summary & Request">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>ملخص الرحلة</h3>
+                <h4>Trip Summary & Request</h4>
+                <p>ملخص كامل للرحلة قبل التأكيد — المسار على الخريطة، المسافة، الوقت المتوقع، والسعر. زرار "اطلب كابتن" لتأكيد الطلب.</p>
+                <ul class="step-features">
+                    <li>مسار الرحلة على الخريطة</li>
+                    <li>المسافة والوقت المتوقع</li>
+                    <li>السعر المتوقع بالجنيه</li>
+                    <li>زرار "اطلب كابتن"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 7. Searching for Driver -->
+        <div class="journey-step">
+            <div class="step-number">7</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/07_searching_for_driver.png', 'جاري البحث عن كابتن — Searching')">
+                    <img src="01_customer_app/07_searching_for_driver.png" alt="Searching for Driver">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>جاري البحث عن كابتن</h3>
+                <h4>Searching for Driver</h4>
+                <p>أنيميشن رادار برتقالي بيدور حوالين موقع العميل وبيدور على أقرب كابتن متاح. مع إمكانية إلغاء الطلب.</p>
+                <ul class="step-features">
+                    <li>أنيميشن رادار/نبض برتقالي</li>
+                    <li>سيارات بتتحرك على الخريطة</li>
+                    <li>وقت الانتظار المتوقع</li>
+                    <li>زرار "إلغاء الطلب"</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 8. Driver Assigned -->
+        <div class="journey-step">
+            <div class="step-number">8</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/08_driver_assigned.png', 'تم تعيين كابتن — Driver Assigned')">
+                    <img src="01_customer_app/08_driver_assigned.png" alt="Driver Assigned">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>تم تعيين كابتن</h3>
+                <h4>Driver Assigned</h4>
+                <p>الكابتن قبل الطلب! كارت فيه صورته، اسمه، نوع العربية، رقم اللوحة، تقييمه، والوقت المتوقع للوصول. مع إمكانية الاتصال أو المحادثة.</p>
+                <ul class="step-features">
+                    <li>صورة واسم الكابتن</li>
+                    <li>نوع العربية ولونها ورقم اللوحة</li>
+                    <li>التقييم ووقت الوصول</li>
+                    <li>اتصل بالكابتن / محادثة</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 9. In-Trip -->
+        <div class="journey-step">
+            <div class="step-number">9</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/09_in_trip_screen.png', 'أثناء الرحلة — In Trip')">
+                    <img src="01_customer_app/09_in_trip_screen.png" alt="In-Trip Screen">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>أثناء الرحلة</h3>
+                <h4>In-Trip Live Tracking</h4>
+                <p>تتبع مباشر للرحلة على الخريطة — المسار اللي اتعمل والمسار المتبقي. مع إمكانية مشاركة الرحلة للأمان.</p>
+                <ul class="step-features">
+                    <li>تتبع مباشر على الخريطة</li>
+                    <li>شريط تقدم الرحلة</li>
+                    <li>مشاركة الرحلة للأمان</li>
+                    <li>زرار طوارئ SOS</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 10. Trip Completed & Rating -->
+        <div class="journey-step">
+            <div class="step-number">10</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/10_trip_completed_rating.png', 'انتهت الرحلة والتقييم — Rating')">
+                    <img src="01_customer_app/10_trip_completed_rating.png" alt="Trip Completed & Rating">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>انتهت الرحلة والتقييم</h3>
+                <h4>Trip Completed & Rating</h4>
+                <p>وصلت بالسلامة! ملخص الرحلة النهائي مع المسافة والوقت والتكلفة. تقييم الكابتن بـ 5 نجوم وتعليق اختياري.</p>
+                <ul class="step-features">
+                    <li>ملخص الرحلة النهائي</li>
+                    <li>التكلفة النهائية بالجنيه</li>
+                    <li>تقييم 5 نجوم ذهبية</li>
+                    <li>تعليق اختياري عن الكابتن</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 11. Trip History -->
+        <div class="journey-step">
+            <div class="step-number">11</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/11_trip_history.png', 'سجل الرحلات — Trip History')">
+                    <img src="01_customer_app/11_trip_history.png" alt="Trip History">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>سجل الرحلات</h3>
+                <h4>Trip History</h4>
+                <p>كل الرحلات السابقة في مكان واحد — التاريخ، المسار، السعر، اسم الكابتن، والتقييم اللي اتعمل.</p>
+                <ul class="step-features">
+                    <li>قائمة الرحلات السابقة</li>
+                    <li>تاريخ ووقت كل رحلة</li>
+                    <li>المسار والسعر</li>
+                    <li>فلتر بالتاريخ</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 12. Profile & Settings -->
+        <div class="journey-step">
+            <div class="step-number">12</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/12_profile_settings.png', 'الملف الشخصي — Profile')">
+                    <img src="01_customer_app/12_profile_settings.png" alt="Profile & Settings">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>الملف الشخصي والإعدادات</h3>
+                <h4>Profile & Settings</h4>
+                <p>إدارة الحساب — تعديل البيانات، الأماكن المحفوظة (البيت، الشغل، الجامعة)، الدعم الفني، وتسجيل الخروج.</p>
+                <ul class="step-features">
+                    <li>تعديل الصورة والاسم</li>
+                    <li>الأماكن المحفوظة</li>
+                    <li>تواصل معنا: 01029188887</li>
+                    <li>تسجيل خروج</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- 13. Chat with Driver -->
+        <div class="journey-step">
+            <div class="step-number">13</div>
+            <div class="step-phone">
+                <div class="phone-frame" onclick="openLightbox('01_customer_app/13_chat_with_driver.png', 'المحادثة مع الكابتن — Chat')">
+                    <img src="01_customer_app/13_chat_with_driver.png" alt="Chat with Driver">
+                </div>
+            </div>
+            <div class="step-info">
+                <h3>المحادثة مع الكابتن</h3>
+                <h4>Chat with Driver</h4>
+                <p>شات مباشر مع الكابتن بتصميم زي الواتساب — فقاعات برتقالية للمرسل ورمادية للمستقبل، مع ردود سريعة جاهزة.</p>
+                <ul class="step-features">
+                    <li>محادثة فورية</li>
+                    <li>ردود سريعة: "فين بالظبط؟"</li>
+                    <li>صورة واسم الكابتن</li>
+                    <li>تصميم واتساب ستايل</li>
+                </ul>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- ===== ADMIN DASHBOARD ===== -->
+<!-- =========================================================== -->
+<section class="section" id="admin">
+    <div class="section-header">
+        <span class="section-tag">Admin Dashboard</span>
+        <h2>لوحة تحكم الأدمن</h2>
+        <p>5 شاشات لإدارة الكباتن والرحلات والمالية في الوقت الحقيقي</p>
+    </div>
+
+    <div class="admin-grid">
+
+        <!-- Admin 1: Dashboard Home -->
+        <div class="admin-card">
+            <div class="admin-card-img">
+                <img src="02_admin_dashboard/01_admin_dashboard_home.png" alt="Admin Dashboard Home"
+                     onclick="openLightbox('02_admin_dashboard/01_admin_dashboard_home.png', 'لوحة التحكم الرئيسية')"
+                     style="cursor: pointer;">
+            </div>
+            <div class="admin-card-body">
+                <span class="card-number">01</span>
+                <h3>لوحة التحكم الرئيسية</h3>
+                <h4>Dashboard Home</h4>
+                <p>نظرة عامة لحظية — عدد السائقين المتاحين (24)، الرحلات النشطة (8)، خريطة بنها المباشرة مع مواقع الكباتن، وفيد النشاط الأخير (رحلات جديدة، مكتملة، تنبيهات تأخير).</p>
+            </div>
+        </div>
+
+        <!-- Admin 2: Incoming Requests -->
+        <div class="admin-card">
+            <div class="admin-card-img">
+                <img src="02_admin_dashboard/02_incoming_requests.png" alt="Incoming Requests"
+                     onclick="openLightbox('02_admin_dashboard/02_incoming_requests.png', 'الطلبات الواردة')"
+                     style="cursor: pointer;">
+            </div>
+            <div class="admin-card-body">
+                <span class="card-number">02</span>
+                <h3>الطلبات الواردة</h3>
+                <h4>Incoming Requests</h4>
+                <p>إدارة طلبات العملاء لحظياً — كل طلب فيه اسم العميل، المسار (من → إلى)، الوقت، وفئة VIP. مع زرار "تعيين يدوي" لاختيار الكابتن المناسب. بحث عن عميل أو وجهة معينة.</p>
+            </div>
+        </div>
+
+        <!-- Admin 3: Manual Driver Assignment -->
+        <div class="admin-card">
+            <div class="admin-card-img">
+                <img src="02_admin_dashboard/03_manual_driver_assignment.png" alt="Manual Assignment"
+                     onclick="openLightbox('02_admin_dashboard/03_manual_driver_assignment.png', 'تعيين كابتن يدوي')"
+                     style="cursor: pointer;">
+            </div>
+            <div class="admin-card-body">
+                <span class="card-number">03</span>
+                <h3>تعيين كابتن يدوي</h3>
+                <h4>Manual Driver Assignment</h4>
+                <p>اختيار الكابتن الأنسب للرحلة — قائمة بأقرب الكباتن مع المسافة، نوع العربية، التقييم، والفئة (Business/Premium/Economy). خريطة مباشرة توضح الموقع.</p>
+            </div>
+        </div>
+
+        <!-- Admin 4: Financial Overview -->
+        <div class="admin-card">
+            <div class="admin-card-img">
+                <img src="02_admin_dashboard/04_financial_overview.png" alt="Financial Overview"
+                     onclick="openLightbox('02_admin_dashboard/04_financial_overview.png', 'النظرة المالية')"
+                     style="cursor: pointer;">
+            </div>
+            <div class="admin-card-body">
+                <span class="card-number">04</span>
+                <h3>النظرة المالية</h3>
+                <h4>Financial Overview</h4>
+                <p>إجمالي الأرباح (128,450 ج.م)، العمولات المحصلة (19,267 ج.م)، متوسط الرحلة (103.5 ج.م). تحليل الإيرادات الأسبوعي بالرسوم البيانية، توزيع العمولات 15%، وعمليات الدفع المعلقة للكباتن.</p>
+            </div>
+        </div>
+
+        <!-- Admin 5: Drivers Management -->
+        <div class="admin-card">
+            <div class="admin-card-img">
+                <img src="02_admin_dashboard/05_drivers_management.png" alt="Drivers Management"
+                     onclick="openLightbox('02_admin_dashboard/05_drivers_management.png', 'إدارة السائقين')"
+                     style="cursor: pointer;">
+            </div>
+            <div class="admin-card-body">
+                <span class="card-number">05</span>
+                <h3>إدارة السائقين</h3>
+                <h4>Drivers Management</h4>
+                <p>قائمة كل الكباتن مع فلاتر (الكل، متصل، في رحلة، غير متصل). كل كابتن فيه صورته، اسمه، رقمه، رقم اللوحة، التقييم، وعدد الرحلات. بحث وإضافة كابتن جديد.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- =========================================================== -->
+<!-- ===== MISSING SCREENS ===== -->
+<!-- =========================================================== -->
+<section class="section" id="missing">
+    <div class="section-header">
+        <span class="section-tag" style="background: rgba(229, 57, 53, 0.15); border-color: rgba(229, 57, 53, 0.3); color: #E53935;">Pending</span>
+        <h2>الشاشات المتبقية</h2>
+        <p>الشاشات دي لسه مطلوبة من المصمم عشان التطبيق يكمل</p>
+    </div>
+
+    <!-- Missing Customer -->
+    <div class="missing-section">
+        <h3>تطبيق العميل — شاشة متبقية</h3>
+        <div class="missing-grid">
+            <div class="missing-item"><span class="dot"></span>الإشعارات (Notifications)</div>
+        </div>
+    </div>
+
+    <!-- Missing Driver App -->
+    <div class="missing-section" style="margin-top: 24px;">
+        <h3>تطبيق الكابتن — 11 شاشة متبقية (التطبيق كامل)</h3>
+        <div class="missing-grid">
+            <div class="missing-item"><span class="dot"></span>تسجيل دخول الكابتن</div>
+            <div class="missing-item"><span class="dot"></span>تسجيل كابتن جديد (4 خطوات)</div>
+            <div class="missing-item"><span class="dot"></span>الصفحة الرئيسية للكابتن</div>
+            <div class="missing-item"><span class="dot"></span>طلب رحلة جديدة (Popup)</div>
+            <div class="missing-item"><span class="dot"></span>التوجه لنقطة الالتقاط</div>
+            <div class="missing-item"><span class="dot"></span>الرحلة جارية — جانب الكابتن</div>
+            <div class="missing-item"><span class="dot"></span>انتهاء الرحلة — جانب الكابتن</div>
+            <div class="missing-item"><span class="dot"></span>أرباح الكابتن</div>
+            <div class="missing-item"><span class="dot"></span>ملف الكابتن</div>
+            <div class="missing-item"><span class="dot"></span>المحادثة مع العميل</div>
+            <div class="missing-item"><span class="dot"></span>إشعارات الكابتن</div>
+        </div>
+    </div>
+
+    <!-- Missing Admin -->
+    <div class="missing-section" style="margin-top: 24px;">
+        <h3>لوحة تحكم الأدمن — 7 شاشات متبقية</h3>
+        <div class="missing-grid">
+            <div class="missing-item"><span class="dot"></span>تسجيل دخول الأدمن</div>
+            <div class="missing-item"><span class="dot"></span>تفاصيل الكابتن (Driver Detail)</div>
+            <div class="missing-item"><span class="dot"></span>الرحلات الجارية (Active Trips)</div>
+            <div class="missing-item"><span class="dot"></span>سجل الرحلات والتقارير</div>
+            <div class="missing-item"><span class="dot"></span>إدارة العملاء</div>
+            <div class="missing-item"><span class="dot"></span>مركز الإشعارات</div>
+            <div class="missing-item"><span class="dot"></span>الإعدادات (أسعار، عمولات، منطقة الخدمة)</div>
+        </div>
+    </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+    <p>وصلني بنها — بنها، القليوبية، مصر | <a href="tel:01029188887">01029188887</a></p>
+    <p style="margin-top: 8px;">تم تصميم 18 شاشة من أصل 37 شاشة مطلوبة</p>
+</footer>
+
+<!-- ===== SCRIPTS ===== -->
+<script>
+    function openLightbox(src, caption) {
+        const overlay = document.getElementById('lightbox');
+        const img = document.getElementById('lightbox-img');
+        const cap = document.getElementById('lightbox-caption');
+        img.src = src;
+        cap.textContent = caption;
+        overlay.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeLightbox() {
+        document.getElementById('lightbox').classList.remove('active');
+        document.body.style.overflow = '';
+    }
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') closeLightbox();
+    });
+
+    // Scroll-based nav highlighting
+    const sections = document.querySelectorAll('.section[id]');
+    const navLinks = document.querySelectorAll('.nav-link');
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const rect = section.getBoundingClientRect();
+            if (rect.top <= 200) current = section.id;
+        });
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active');
+            }
+        });
+    });
+</script>
+
+</body>
+</html>
