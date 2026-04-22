@@ -6,1059 +6,453 @@
     <title>وصلني بنها — Waslni Banha App Screens</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Cairo', sans-serif;
-            background: #0F0F1A;
-            color: #FFFFFF;
-            min-height: 100vh;
-            overflow-x: hidden;
-        }
-
-        /* ===== HERO SECTION ===== */
-        .hero {
-            position: relative;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            padding: 40px 20px;
-            background: radial-gradient(ellipse at center top, #1A1A2E 0%, #0F0F1A 70%);
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 800px;
-            height: 800px;
-            background: radial-gradient(circle, rgba(245, 124, 0, 0.08) 0%, transparent 70%);
-            pointer-events: none;
-        }
-
-        .hero-logo {
-            width: 320px;
-            max-width: 80%;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 40px rgba(212, 168, 67, 0.3));
-            animation: floatLogo 4s ease-in-out infinite;
-        }
-
-        @keyframes floatLogo {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
-        }
-
-        .hero-badge {
-            width: 160px;
-            margin-bottom: 30px;
-            border-radius: 16px;
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: 900;
-            background: linear-gradient(135deg, #F57C00, #D4A843);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 12px;
-        }
-
-        .hero p {
-            font-size: 1.2rem;
-            color: #B0B0B0;
-            max-width: 600px;
-            line-height: 1.8;
-        }
-
-        .hero-stats {
-            display: flex;
-            gap: 40px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .hero-stat {
-            text-align: center;
-        }
-
-        .hero-stat .number {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: #F57C00;
-        }
-
-        .hero-stat .label {
-            font-size: 0.9rem;
-            color: #B0B0B0;
-        }
-
-        .scroll-hint {
-            position: absolute;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            animation: bounce 2s ease-in-out infinite;
-            color: #F57C00;
-            font-size: 1.5rem;
-        }
-
-        @keyframes bounce {
-            0%, 100% { transform: translateX(-50%) translateY(0); }
-            50% { transform: translateX(-50%) translateY(10px); }
-        }
-
-        /* ===== NAV ===== */
-        .sticky-nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            background: rgba(15, 15, 26, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(245, 124, 0, 0.2);
-            padding: 0 20px;
-        }
-
-        .nav-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            overflow-x: auto;
-            scrollbar-width: none;
-            -ms-overflow-style: none;
-            padding: 14px 0;
-        }
-
-        .nav-inner::-webkit-scrollbar { display: none; }
-
-        .nav-link {
-            color: #B0B0B0;
-            text-decoration: none;
-            white-space: nowrap;
-            font-size: 0.95rem;
-            font-weight: 600;
-            padding: 8px 20px;
-            border-radius: 20px;
-            transition: all 0.3s;
-            border: 1px solid transparent;
-        }
-
-        .nav-link:hover, .nav-link.active {
-            color: #F57C00;
-            background: rgba(245, 124, 0, 0.1);
-            border-color: rgba(245, 124, 0, 0.3);
-        }
-
-        /* ===== SECTIONS ===== */
-        .section {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 20px;
-        }
-
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-tag {
-            display: inline-block;
-            padding: 6px 20px;
-            background: rgba(245, 124, 0, 0.15);
-            border: 1px solid rgba(245, 124, 0, 0.3);
-            border-radius: 20px;
-            color: #F57C00;
-            font-size: 0.85rem;
-            font-weight: 700;
-            margin-bottom: 16px;
-        }
-
-        .section-header h2 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            margin-bottom: 10px;
-        }
-
-        .section-header p {
-            color: #B0B0B0;
-            font-size: 1.05rem;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.7;
-        }
-
-        /* ===== JOURNEY FLOW ===== */
-        .journey {
-            position: relative;
-        }
-
-        .journey-step {
-            display: flex;
-            align-items: flex-start;
-            gap: 40px;
-            margin-bottom: 80px;
-            position: relative;
-        }
-
-        .journey-step:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        /* Timeline line */
-        .journey::before {
-            content: '';
-            position: absolute;
-            right: 50%;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, #F57C00, #D4A843, #F57C00);
-            opacity: 0.3;
-        }
-
-        .step-number {
-            position: absolute;
-            right: calc(50% - 22px);
-            width: 44px;
-            height: 44px;
-            background: linear-gradient(135deg, #F57C00, #D4A843);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.1rem;
-            color: #0F0F1A;
-            z-index: 2;
-            box-shadow: 0 0 20px rgba(245, 124, 0, 0.4);
-        }
-
-        .step-phone {
-            flex: 0 0 280px;
-            position: relative;
-        }
-
-        .phone-frame {
-            background: #1E1E30;
-            border-radius: 32px;
-            padding: 12px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(245, 124, 0, 0.08);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s, box-shadow 0.4s;
-            cursor: pointer;
-        }
-
-        .phone-frame:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 50px rgba(245, 124, 0, 0.15);
-        }
-
-        .phone-frame img {
-            width: 100%;
-            border-radius: 22px;
-            display: block;
-        }
-
-        .step-info {
-            flex: 1;
-            padding-top: 20px;
-        }
-
-        .step-info h3 {
-            font-size: 1.6rem;
-            font-weight: 800;
-            margin-bottom: 6px;
-            color: #F57C00;
-        }
-
-        .step-info h4 {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #D4A843;
-            margin-bottom: 16px;
-        }
-
-        .step-info p {
-            color: #B0B0B0;
-            line-height: 1.8;
-            font-size: 1rem;
-            margin-bottom: 20px;
-        }
-
-        .step-features {
-            list-style: none;
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .step-features li {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            color: #ccc;
-            font-size: 0.95rem;
-        }
-
-        .step-features li::before {
-            content: '';
-            width: 8px;
-            height: 8px;
-            background: #F57C00;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .flow-arrow {
-            text-align: center;
-            margin: -40px 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .flow-arrow span {
-            display: inline-block;
-            color: #F57C00;
-            font-size: 2rem;
-            animation: pulseArrow 2s ease-in-out infinite;
-        }
-
-        @keyframes pulseArrow {
-            0%, 100% { opacity: 0.4; }
-            50% { opacity: 1; }
-        }
-
-        /* ===== ADMIN GRID ===== */
-        .admin-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
-            gap: 40px;
-        }
-
-        .admin-card {
-            background: #1E1E30;
-            border-radius: 24px;
-            overflow: hidden;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: transform 0.4s, box-shadow 0.4s;
-        }
-
-        .admin-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4), 0 0 30px rgba(245, 124, 0, 0.1);
-        }
-
-        .admin-card-img {
-            padding: 16px 16px 0;
-        }
-
-        .admin-card-img img {
-            width: 100%;
-            border-radius: 16px;
-            display: block;
-        }
-
-        .admin-card-body {
-            padding: 24px;
-        }
-
-        .admin-card-body .card-number {
-            display: inline-block;
-            background: linear-gradient(135deg, #F57C00, #D4A843);
-            color: #0F0F1A;
-            font-weight: 800;
-            font-size: 0.85rem;
-            padding: 4px 14px;
-            border-radius: 12px;
-            margin-bottom: 12px;
-        }
-
-        .admin-card-body h3 {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-            color: #F57C00;
-        }
-
-        .admin-card-body h4 {
-            font-size: 0.95rem;
-            color: #D4A843;
-            margin-bottom: 12px;
-        }
-
-        .admin-card-body p {
-            color: #B0B0B0;
-            font-size: 0.9rem;
-            line-height: 1.7;
-        }
-
-        /* ===== MISSING SCREENS ===== */
-        .missing-section {
-            background: rgba(229, 57, 53, 0.08);
-            border: 1px solid rgba(229, 57, 53, 0.2);
-            border-radius: 20px;
-            padding: 40px;
-            margin-top: 60px;
-        }
-
-        .missing-section h3 {
-            color: #E53935;
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-        }
-
-        .missing-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 12px;
-        }
-
-        .missing-item {
-            background: rgba(229, 57, 53, 0.06);
-            border: 1px dashed rgba(229, 57, 53, 0.3);
-            border-radius: 12px;
-            padding: 14px 18px;
-            color: #B0B0B0;
-            font-size: 0.9rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .missing-item .dot {
-            width: 8px;
-            height: 8px;
-            background: #E53935;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        /* ===== LIGHTBOX ===== */
-        .lightbox-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.92);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-            cursor: zoom-out;
-            animation: fadeIn 0.3s;
-        }
-
-        .lightbox-overlay.active {
-            display: flex;
-        }
-
-        .lightbox-overlay img {
-            max-height: 90vh;
-            max-width: 90vw;
-            border-radius: 20px;
-            box-shadow: 0 0 60px rgba(245, 124, 0, 0.2);
-        }
-
-        .lightbox-close {
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            background: rgba(245, 124, 0, 0.9);
-            color: #fff;
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            font-size: 1.3rem;
-            cursor: pointer;
-            z-index: 1001;
-        }
-
-        .lightbox-caption {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #fff;
-            font-size: 1.1rem;
-            font-weight: 700;
-            background: rgba(30, 30, 48, 0.8);
-            padding: 10px 30px;
-            border-radius: 30px;
-            border: 1px solid rgba(245, 124, 0, 0.3);
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            text-align: center;
-            padding: 40px 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            color: #666;
-            font-size: 0.85rem;
-        }
-
-        .footer a {
-            color: #F57C00;
-            text-decoration: none;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 900px) {
-            .journey::before { display: none; }
-            .step-number { display: none; }
-
-            .journey-step,
-            .journey-step:nth-child(even) {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-            }
-
-            .step-phone { flex: none; width: 260px; }
-            .step-info { padding-top: 10px; }
-            .step-features { align-items: center; }
-
-            .hero h1 { font-size: 2rem; }
-            .hero-stats { gap: 24px; }
-            .admin-grid { grid-template-columns: 1fr; }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Cairo',sans-serif;background:#0F0F1A;color:#FFF;min-height:100vh;overflow-x:hidden}
+
+        /* HERO */
+        .hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:40px 20px;background:radial-gradient(ellipse at center top,#1A1A2E 0%,#0F0F1A 70%);overflow:hidden}
+        .hero::before{content:'';position:absolute;top:-50%;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(245,124,0,0.08) 0%,transparent 70%);pointer-events:none}
+        .hero-badge{width:160px;margin-bottom:30px;border-radius:16px}
+        .hero h1{font-size:3rem;font-weight:900;background:linear-gradient(135deg,#F57C00,#D4A843);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:12px}
+        .hero p{font-size:1.2rem;color:#B0B0B0;max-width:600px;line-height:1.8}
+        .hero-stats{display:flex;gap:40px;margin-top:40px;flex-wrap:wrap;justify-content:center}
+        .hero-stat{text-align:center}
+        .hero-stat .number{font-size:2.5rem;font-weight:900;color:#F57C00}
+        .hero-stat .label{font-size:0.9rem;color:#B0B0B0}
+        .scroll-hint{position:absolute;bottom:30px;left:50%;transform:translateX(-50%);animation:bounce 2s ease-in-out infinite;color:#F57C00;font-size:1.5rem}
+        @keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(10px)}}
+
+        /* NAV */
+        .sticky-nav{position:sticky;top:0;z-index:100;background:rgba(15,15,26,0.95);backdrop-filter:blur(20px);border-bottom:1px solid rgba(245,124,0,0.2);padding:0 20px}
+        .nav-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:12px;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;padding:14px 0}
+        .nav-inner::-webkit-scrollbar{display:none}
+        .nav-link{color:#B0B0B0;text-decoration:none;white-space:nowrap;font-size:0.9rem;font-weight:600;padding:8px 18px;border-radius:20px;transition:all 0.3s;border:1px solid transparent}
+        .nav-link:hover,.nav-link.active{color:#F57C00;background:rgba(245,124,0,0.1);border-color:rgba(245,124,0,0.3)}
+
+        /* SECTIONS */
+        .section{max-width:1400px;margin:0 auto;padding:80px 20px}
+        .section-header{text-align:center;margin-bottom:60px}
+        .section-tag{display:inline-block;padding:6px 20px;background:rgba(245,124,0,0.15);border:1px solid rgba(245,124,0,0.3);border-radius:20px;color:#F57C00;font-size:0.85rem;font-weight:700;margin-bottom:16px}
+        .section-header h2{font-size:2.2rem;font-weight:800;margin-bottom:10px}
+        .section-header p{color:#B0B0B0;font-size:1.05rem;max-width:600px;margin:0 auto;line-height:1.7}
+
+        /* JOURNEY FLOW */
+        .journey{position:relative}
+        .journey-step{display:flex;align-items:flex-start;gap:40px;margin-bottom:80px;position:relative}
+        .journey-step:nth-child(even){flex-direction:row-reverse}
+        .journey::before{content:'';position:absolute;right:50%;top:0;bottom:0;width:3px;background:linear-gradient(to bottom,#F57C00,#D4A843,#F57C00);opacity:0.3}
+        .step-number{position:absolute;right:calc(50% - 22px);width:44px;height:44px;background:linear-gradient(135deg,#F57C00,#D4A843);border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#0F0F1A;z-index:2;box-shadow:0 0 20px rgba(245,124,0,0.4)}
+        .step-phone{flex:0 0 280px}
+        .phone-frame{background:#1E1E30;border-radius:32px;padding:12px;box-shadow:0 20px 60px rgba(0,0,0,0.5),0 0 30px rgba(245,124,0,0.08);border:1px solid rgba(255,255,255,0.05);transition:transform 0.4s,box-shadow 0.4s;cursor:pointer}
+        .phone-frame:hover{transform:translateY(-8px) scale(1.02);box-shadow:0 30px 80px rgba(0,0,0,0.6),0 0 50px rgba(245,124,0,0.15)}
+        .phone-frame img{width:100%;border-radius:22px;display:block}
+        .step-info{flex:1;padding-top:20px}
+        .step-info h3{font-size:1.5rem;font-weight:800;margin-bottom:6px;color:#F57C00}
+        .step-info h4{font-size:1rem;font-weight:600;color:#D4A843;margin-bottom:14px}
+        .step-info p{color:#B0B0B0;line-height:1.8;font-size:0.95rem;margin-bottom:16px}
+        .step-features{list-style:none;display:flex;flex-direction:column;gap:8px}
+        .step-features li{display:flex;align-items:center;gap:10px;color:#ccc;font-size:0.9rem}
+        .step-features li::before{content:'';width:8px;height:8px;background:#F57C00;border-radius:50%;flex-shrink:0}
+
+        /* GRID CARDS */
+        .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:36px}
+        .g-card{background:#1E1E30;border-radius:24px;overflow:hidden;border:1px solid rgba(255,255,255,0.05);transition:transform 0.4s,box-shadow 0.4s}
+        .g-card:hover{transform:translateY(-6px);box-shadow:0 20px 50px rgba(0,0,0,0.4),0 0 30px rgba(245,124,0,0.1)}
+        .g-card-img{padding:16px 16px 0}
+        .g-card-img img{width:100%;border-radius:16px;display:block;cursor:pointer}
+        .g-card-body{padding:20px 24px 24px}
+        .g-card-body .card-number{display:inline-block;background:linear-gradient(135deg,#F57C00,#D4A843);color:#0F0F1A;font-weight:800;font-size:0.8rem;padding:4px 14px;border-radius:12px;margin-bottom:10px}
+        .g-card-body h3{font-size:1.2rem;font-weight:700;margin-bottom:4px;color:#F57C00}
+        .g-card-body h4{font-size:0.9rem;color:#D4A843;margin-bottom:10px}
+        .g-card-body p{color:#B0B0B0;font-size:0.85rem;line-height:1.7}
+
+        /* GREEN TAG for driver */
+        .tag-green{background:rgba(76,175,80,0.15)!important;border-color:rgba(76,175,80,0.3)!important;color:#4CAF50!important}
+
+        /* LIGHTBOX */
+        .lightbox-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.92);z-index:1000;align-items:center;justify-content:center;cursor:zoom-out;animation:fadeIn 0.3s}
+        .lightbox-overlay.active{display:flex}
+        .lightbox-overlay img{max-height:90vh;max-width:90vw;border-radius:20px;box-shadow:0 0 60px rgba(245,124,0,0.2)}
+        .lightbox-close{position:fixed;top:20px;left:20px;background:rgba(245,124,0,0.9);color:#fff;border:none;width:44px;height:44px;border-radius:50%;font-size:1.3rem;cursor:pointer;z-index:1001}
+        .lightbox-caption{position:fixed;bottom:30px;left:50%;transform:translateX(-50%);color:#fff;font-size:1.1rem;font-weight:700;background:rgba(30,30,48,0.8);padding:10px 30px;border-radius:30px;border:1px solid rgba(245,124,0,0.3);white-space:nowrap}
+        @keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+        /* FOOTER */
+        .footer{text-align:center;padding:40px 20px;border-top:1px solid rgba(255,255,255,0.05);color:#666;font-size:0.85rem}
+        .footer a{color:#F57C00;text-decoration:none}
+
+        /* DIVIDER */
+        .section-divider{max-width:200px;height:3px;margin:0 auto 0;background:linear-gradient(90deg,transparent,#F57C00,transparent);border-radius:2px}
+
+        /* RESPONSIVE */
+        @media(max-width:900px){
+            .journey::before{display:none}.step-number{display:none}
+            .journey-step,.journey-step:nth-child(even){flex-direction:column;align-items:center;text-align:center}
+            .step-phone{flex:none;width:260px}.step-info{padding-top:10px}.step-features{align-items:center}
+            .hero h1{font-size:2rem}.hero-stats{gap:24px}.card-grid{grid-template-columns:1fr}
         }
     </style>
 </head>
 <body>
 
-<!-- ===== LIGHTBOX ===== -->
+<!-- LIGHTBOX -->
 <div class="lightbox-overlay" id="lightbox" onclick="closeLightbox()">
     <button class="lightbox-close" onclick="closeLightbox()">&times;</button>
     <img id="lightbox-img" src="" alt="">
     <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
-<!-- ===== HERO ===== -->
+<!-- HERO -->
 <section class="hero">
-    <img src="03_brand_assets/24_7_slogan_badge.png" alt="24/7 Badge" class="hero-badge">
+    <img src="03_brand_assets/24_7_slogan_badge.png" alt="24/7" class="hero-badge">
     <h1>وصلني بنها</h1>
     <p>تطبيق توصيل بسيارات ملاكي في بنها، القليوبية — أقرب كابتن هيكلمك</p>
-
     <div class="hero-stats">
-        <div class="hero-stat">
-            <div class="number">13</div>
-            <div class="label">شاشة العميل</div>
-        </div>
-        <div class="hero-stat">
-            <div class="number">5</div>
-            <div class="label">شاشة الأدمن</div>
-        </div>
-        <div class="hero-stat">
-            <div class="number">3</div>
-            <div class="label">لوحات التطبيق</div>
-        </div>
+        <div class="hero-stat"><div class="number">14</div><div class="label">شاشة العميل</div></div>
+        <div class="hero-stat"><div class="number">14</div><div class="label">شاشة الكابتن</div></div>
+        <div class="hero-stat"><div class="number">12</div><div class="label">شاشة الأدمن</div></div>
+        <div class="hero-stat"><div class="number">17</div><div class="label">نسخة بديلة</div></div>
     </div>
-
     <div class="scroll-hint">&#x25BC;</div>
 </section>
 
-<!-- ===== NAV ===== -->
+<!-- NAV -->
 <nav class="sticky-nav">
     <div class="nav-inner">
-        <a href="#customer" class="nav-link active">رحلة العميل</a>
-        <a href="#admin" class="nav-link">لوحة تحكم الأدمن</a>
-        <a href="#missing" class="nav-link">الشاشات المتبقية</a>
+        <a href="#customer" class="nav-link active">رحلة العميل (14)</a>
+        <a href="#driver" class="nav-link">تطبيق الكابتن (14)</a>
+        <a href="#admin" class="nav-link">لوحة الأدمن (12)</a>
+        <a href="#alternates" class="nav-link">نسخ بديلة (17)</a>
     </div>
 </nav>
 
-<!-- =========================================================== -->
-<!-- ===== CUSTOMER JOURNEY ===== -->
-<!-- =========================================================== -->
+<!-- ============================================== -->
+<!-- CUSTOMER JOURNEY — 14 screens -->
+<!-- ============================================== -->
 <section class="section" id="customer">
     <div class="section-header">
         <span class="section-tag">Customer App</span>
         <h2>رحلة العميل</h2>
-        <p>13 شاشة تغطي تجربة العميل الكاملة من فتح التطبيق وحتى تقييم الكابتن</p>
+        <p>14 شاشة تغطي تجربة العميل الكاملة من فتح التطبيق وحتى تقييم الكابتن</p>
     </div>
-
     <div class="journey">
 
-        <!-- 1. Splash Screen -->
-        <div class="journey-step">
-            <div class="step-number">1</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/01_splash_screen.png', 'شاشة البداية — Splash Screen')">
-                    <img src="01_customer_app/01_splash_screen.png" alt="Splash Screen">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>شاشة البداية</h3>
-                <h4>Splash Screen</h4>
-                <p>أول شاشة يشوفها المستخدم لما يفتح التطبيق. تعرض اللوجو بتاع وصلني بنها مع الهوية البصرية الفخمة — خلفية سوداء، السيارة الذهبية، وشعار 24/7.</p>
-                <ul class="step-features">
-                    <li>لوجو وصلني بنها الذهبي</li>
-                    <li>شعار "أقرب كابتن هيكلمك"</li>
-                    <li>بادج خدمة 24/7</li>
-                    <li>انتقال تلقائي بعد ثانيتين</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">1</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/01_splash_screen.png','شاشة البداية')"><img src="01_customer_app/01_splash_screen.png" alt=""></div></div>
+            <div class="step-info"><h3>شاشة البداية</h3><h4>Splash Screen</h4><p>أول شاشة يشوفها المستخدم — اللوجو الذهبي، شعار 24/7، وخلفية سوداء فخمة.</p>
+            <ul class="step-features"><li>لوجو وصلني بنها الذهبي</li><li>شعار "أقرب كابتن هيكلمك"</li><li>بادج خدمة 24/7</li></ul></div>
         </div>
 
-        <!-- 2. Onboarding -->
-        <div class="journey-step">
-            <div class="step-number">2</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/02_onboarding_flow.png', 'شاشات الترحيب — Onboarding')">
-                    <img src="01_customer_app/02_onboarding_flow.png" alt="Onboarding Flow">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>شاشات الترحيب</h3>
-                <h4>Onboarding Flow</h4>
-                <p>3 شاشات تعريفية تشرح للمستخدم الجديد إزاي يستخدم التطبيق — طلب التوصيلة، الكابتن الموثوق، والتقييم.</p>
-                <ul class="step-features">
-                    <li>3 سلايدات تعريفية</li>
-                    <li>رسومات توضيحية</li>
-                    <li>زرار "التالي" و "تخطي"</li>
-                    <li>مؤشر النقاط البرتقالي</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">2</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/02_onboarding_flow.png','شاشات الترحيب')"><img src="01_customer_app/02_onboarding_flow.png" alt=""></div></div>
+            <div class="step-info"><h3>شاشات الترحيب</h3><h4>Onboarding Flow</h4><p>3 سلايدات تعريفية — طلب التوصيلة، الكابتن الموثوق، والتقييم.</p>
+            <ul class="step-features"><li>3 سلايدات تعريفية</li><li>رسومات توضيحية</li><li>زرار "التالي" و "تخطي"</li></ul></div>
         </div>
 
-        <!-- 3. Login & OTP -->
-        <div class="journey-step">
-            <div class="step-number">3</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/03_login_otp.png', 'تسجيل الدخول — Login & OTP')">
-                    <img src="01_customer_app/03_login_otp.png" alt="Login & OTP">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>تسجيل الدخول</h3>
-                <h4>Login & OTP Verification</h4>
-                <p>تسجيل الدخول برقم الموبايل المصري مع كود التحقق OTP. تصميم بسيط ومتوافق مع RTL.</p>
-                <ul class="step-features">
-                    <li>إدخال رقم الموبايل +20</li>
-                    <li>كود تحقق OTP</li>
-                    <li>إدخال الاسم للمستخدم الجديد</li>
-                    <li>تصميم RTL كامل</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">3</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/03_login_otp.png','تسجيل الدخول')"><img src="01_customer_app/03_login_otp.png" alt=""></div></div>
+            <div class="step-info"><h3>تسجيل الدخول</h3><h4>Login & OTP</h4><p>تسجيل دخول برقم الموبايل المصري +20 مع كود تحقق OTP.</p>
+            <ul class="step-features"><li>إدخال رقم الموبايل +20</li><li>كود تحقق OTP</li><li>تصميم RTL كامل</li></ul></div>
         </div>
 
-        <!-- 4. Customer Home -->
-        <div class="journey-step">
-            <div class="step-number">4</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/04_customer_home.png', 'الصفحة الرئيسية — Customer Home')">
-                    <img src="01_customer_app/04_customer_home.png" alt="Customer Home">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>الصفحة الرئيسية</h3>
-                <h4>Customer Home</h4>
-                <p>الشاشة الرئيسية فيها خريطة بنها مع موقع المستخدم، وبوتوم شيت فيه البحث والوجهات السريعة زي جامعة بنها ومحطة القطر.</p>
-                <ul class="step-features">
-                    <li>خريطة مباشرة مع موقع المستخدم</li>
-                    <li>بحث "عايز تروح فين؟"</li>
-                    <li>وجهات سريعة: جامعة بنها، محطة القطر</li>
-                    <li>آخر الرحلات السابقة</li>
-                    <li>زرار اتصل بينا</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">4</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/04_customer_home.png','الصفحة الرئيسية')"><img src="01_customer_app/04_customer_home.png" alt=""></div></div>
+            <div class="step-info"><h3>الصفحة الرئيسية</h3><h4>Customer Home</h4><p>خريطة بنها مع موقع المستخدم، بوتوم شيت للبحث، ووجهات سريعة زي جامعة بنها ومحطة القطر.</p>
+            <ul class="step-features"><li>خريطة مباشرة</li><li>بحث "عايز تروح فين؟"</li><li>وجهات سريعة</li><li>آخر الرحلات</li></ul></div>
         </div>
 
-        <!-- 5. Set Pickup & Destination -->
-        <div class="journey-step">
-            <div class="step-number">5</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/05_set_pickup_destination.png', 'تحديد نقطة الانطلاق والوصول — Set Pickup')">
-                    <img src="01_customer_app/05_set_pickup_destination.png" alt="Set Pickup & Destination">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>تحديد نقطة الانطلاق والوصول</h3>
-                <h4>Set Pickup & Destination</h4>
-                <p>العميل بيحدد مكان الركوب ومكان الوصول على الخريطة. بن برتقالي للركوب وبن ذهبي للوصول.</p>
-                <ul class="step-features">
-                    <li>بن برتقالي = نقطة الركوب "من"</li>
-                    <li>بن ذهبي = نقطة الوصول "إلى"</li>
-                    <li>استخدم موقعي الحالي</li>
-                    <li>بحث بأسماء الأماكن في بنها</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">5</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/05_set_pickup_destination.png','تحديد الانطلاق والوصول')"><img src="01_customer_app/05_set_pickup_destination.png" alt=""></div></div>
+            <div class="step-info"><h3>تحديد نقطة الانطلاق والوصول</h3><h4>Set Pickup & Destination</h4><p>بن برتقالي للركوب وبن ذهبي للوصول مع بحث بأسماء أماكن بنها.</p>
+            <ul class="step-features"><li>بن برتقالي = "من"</li><li>بن ذهبي = "إلى"</li><li>استخدم موقعي الحالي</li></ul></div>
         </div>
 
-        <!-- 6. Trip Summary -->
-        <div class="journey-step">
-            <div class="step-number">6</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/06_trip_summary_request.png', 'ملخص الرحلة — Trip Summary')">
-                    <img src="01_customer_app/06_trip_summary_request.png" alt="Trip Summary & Request">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>ملخص الرحلة</h3>
-                <h4>Trip Summary & Request</h4>
-                <p>ملخص كامل للرحلة قبل التأكيد — المسار على الخريطة، المسافة، الوقت المتوقع، والسعر. زرار "اطلب كابتن" لتأكيد الطلب.</p>
-                <ul class="step-features">
-                    <li>مسار الرحلة على الخريطة</li>
-                    <li>المسافة والوقت المتوقع</li>
-                    <li>السعر المتوقع بالجنيه</li>
-                    <li>زرار "اطلب كابتن"</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">6</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/06_trip_summary_request.png','ملخص الرحلة')"><img src="01_customer_app/06_trip_summary_request.png" alt=""></div></div>
+            <div class="step-info"><h3>ملخص الرحلة</h3><h4>Trip Summary & Request</h4><p>المسار على الخريطة، المسافة، الوقت، والسعر المتوقع. زرار "اطلب كابتن".</p>
+            <ul class="step-features"><li>مسار الرحلة على الخريطة</li><li>المسافة والوقت والسعر</li><li>زرار "اطلب كابتن"</li></ul></div>
         </div>
 
-        <!-- 7. Searching for Driver -->
-        <div class="journey-step">
-            <div class="step-number">7</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/07_searching_for_driver.png', 'جاري البحث عن كابتن — Searching')">
-                    <img src="01_customer_app/07_searching_for_driver.png" alt="Searching for Driver">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>جاري البحث عن كابتن</h3>
-                <h4>Searching for Driver</h4>
-                <p>أنيميشن رادار برتقالي بيدور حوالين موقع العميل وبيدور على أقرب كابتن متاح. مع إمكانية إلغاء الطلب.</p>
-                <ul class="step-features">
-                    <li>أنيميشن رادار/نبض برتقالي</li>
-                    <li>سيارات بتتحرك على الخريطة</li>
-                    <li>وقت الانتظار المتوقع</li>
-                    <li>زرار "إلغاء الطلب"</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">7</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/07_searching_for_driver.png','جاري البحث عن كابتن')"><img src="01_customer_app/07_searching_for_driver.png" alt=""></div></div>
+            <div class="step-info"><h3>جاري البحث عن كابتن</h3><h4>Searching for Driver</h4><p>أنيميشن رادار برتقالي حوالين موقع العميل بيدور على أقرب كابتن.</p>
+            <ul class="step-features"><li>أنيميشن رادار</li><li>وقت الانتظار المتوقع</li><li>زرار "إلغاء الطلب"</li></ul></div>
         </div>
 
-        <!-- 8. Driver Assigned -->
-        <div class="journey-step">
-            <div class="step-number">8</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/08_driver_assigned.png', 'تم تعيين كابتن — Driver Assigned')">
-                    <img src="01_customer_app/08_driver_assigned.png" alt="Driver Assigned">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>تم تعيين كابتن</h3>
-                <h4>Driver Assigned</h4>
-                <p>الكابتن قبل الطلب! كارت فيه صورته، اسمه، نوع العربية، رقم اللوحة، تقييمه، والوقت المتوقع للوصول. مع إمكانية الاتصال أو المحادثة.</p>
-                <ul class="step-features">
-                    <li>صورة واسم الكابتن</li>
-                    <li>نوع العربية ولونها ورقم اللوحة</li>
-                    <li>التقييم ووقت الوصول</li>
-                    <li>اتصل بالكابتن / محادثة</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">8</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/08_driver_assigned.png','تم تعيين كابتن')"><img src="01_customer_app/08_driver_assigned.png" alt=""></div></div>
+            <div class="step-info"><h3>تم تعيين كابتن</h3><h4>Driver Assigned</h4><p>كارت الكابتن — صورته، اسمه، العربية، اللوحة، التقييم، والوقت المتوقع للوصول.</p>
+            <ul class="step-features"><li>بيانات الكابتن كاملة</li><li>اتصل بالكابتن / محادثة</li><li>إلغاء الرحلة</li></ul></div>
         </div>
 
-        <!-- 9. In-Trip -->
-        <div class="journey-step">
-            <div class="step-number">9</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/09_in_trip_screen.png', 'أثناء الرحلة — In Trip')">
-                    <img src="01_customer_app/09_in_trip_screen.png" alt="In-Trip Screen">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>أثناء الرحلة</h3>
-                <h4>In-Trip Live Tracking</h4>
-                <p>تتبع مباشر للرحلة على الخريطة — المسار اللي اتعمل والمسار المتبقي. مع إمكانية مشاركة الرحلة للأمان.</p>
-                <ul class="step-features">
-                    <li>تتبع مباشر على الخريطة</li>
-                    <li>شريط تقدم الرحلة</li>
-                    <li>مشاركة الرحلة للأمان</li>
-                    <li>زرار طوارئ SOS</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">9</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/09_in_trip_screen.png','أثناء الرحلة')"><img src="01_customer_app/09_in_trip_screen.png" alt=""></div></div>
+            <div class="step-info"><h3>أثناء الرحلة</h3><h4>In-Trip Live Tracking</h4><p>تتبع مباشر على الخريطة مع شريط تقدم وإمكانية مشاركة الرحلة للأمان.</p>
+            <ul class="step-features"><li>تتبع مباشر</li><li>شريط تقدم الرحلة</li><li>مشاركة للأمان</li><li>زرار طوارئ SOS</li></ul></div>
         </div>
 
-        <!-- 10. Trip Completed & Rating -->
-        <div class="journey-step">
-            <div class="step-number">10</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/10_trip_completed_rating.png', 'انتهت الرحلة والتقييم — Rating')">
-                    <img src="01_customer_app/10_trip_completed_rating.png" alt="Trip Completed & Rating">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>انتهت الرحلة والتقييم</h3>
-                <h4>Trip Completed & Rating</h4>
-                <p>وصلت بالسلامة! ملخص الرحلة النهائي مع المسافة والوقت والتكلفة. تقييم الكابتن بـ 5 نجوم وتعليق اختياري.</p>
-                <ul class="step-features">
-                    <li>ملخص الرحلة النهائي</li>
-                    <li>التكلفة النهائية بالجنيه</li>
-                    <li>تقييم 5 نجوم ذهبية</li>
-                    <li>تعليق اختياري عن الكابتن</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">10</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/10_trip_completed_rating.png','التقييم')"><img src="01_customer_app/10_trip_completed_rating.png" alt=""></div></div>
+            <div class="step-info"><h3>انتهت الرحلة والتقييم</h3><h4>Trip Completed & Rating</h4><p>ملخص الرحلة النهائي مع تقييم 5 نجوم ذهبية وتعليق اختياري.</p>
+            <ul class="step-features"><li>ملخص الرحلة النهائي</li><li>التكلفة النهائية</li><li>تقييم 5 نجوم</li><li>تعليق اختياري</li></ul></div>
         </div>
 
-        <!-- 11. Trip History -->
-        <div class="journey-step">
-            <div class="step-number">11</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/11_trip_history.png', 'سجل الرحلات — Trip History')">
-                    <img src="01_customer_app/11_trip_history.png" alt="Trip History">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>سجل الرحلات</h3>
-                <h4>Trip History</h4>
-                <p>كل الرحلات السابقة في مكان واحد — التاريخ، المسار، السعر، اسم الكابتن، والتقييم اللي اتعمل.</p>
-                <ul class="step-features">
-                    <li>قائمة الرحلات السابقة</li>
-                    <li>تاريخ ووقت كل رحلة</li>
-                    <li>المسار والسعر</li>
-                    <li>فلتر بالتاريخ</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">11</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/11_trip_history.png','سجل الرحلات')"><img src="01_customer_app/11_trip_history.png" alt=""></div></div>
+            <div class="step-info"><h3>سجل الرحلات</h3><h4>Trip History</h4><p>كل الرحلات السابقة — التاريخ، المسار، السعر، الكابتن، والتقييم.</p>
+            <ul class="step-features"><li>قائمة الرحلات السابقة</li><li>المسار والسعر</li><li>فلتر بالتاريخ</li></ul></div>
         </div>
 
-        <!-- 12. Profile & Settings -->
-        <div class="journey-step">
-            <div class="step-number">12</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/12_profile_settings.png', 'الملف الشخصي — Profile')">
-                    <img src="01_customer_app/12_profile_settings.png" alt="Profile & Settings">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>الملف الشخصي والإعدادات</h3>
-                <h4>Profile & Settings</h4>
-                <p>إدارة الحساب — تعديل البيانات، الأماكن المحفوظة (البيت، الشغل، الجامعة)، الدعم الفني، وتسجيل الخروج.</p>
-                <ul class="step-features">
-                    <li>تعديل الصورة والاسم</li>
-                    <li>الأماكن المحفوظة</li>
-                    <li>تواصل معنا: 01029188887</li>
-                    <li>تسجيل خروج</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">12</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/12_profile_settings.png','الملف الشخصي')"><img src="01_customer_app/12_profile_settings.png" alt=""></div></div>
+            <div class="step-info"><h3>الملف الشخصي</h3><h4>Profile & Settings</h4><p>إدارة الحساب — الأماكن المحفوظة، الدعم الفني، وتسجيل الخروج.</p>
+            <ul class="step-features"><li>تعديل البيانات</li><li>الأماكن المحفوظة</li><li>تواصل معنا</li></ul></div>
         </div>
 
-        <!-- 13. Chat with Driver -->
-        <div class="journey-step">
-            <div class="step-number">13</div>
-            <div class="step-phone">
-                <div class="phone-frame" onclick="openLightbox('01_customer_app/13_chat_with_driver.png', 'المحادثة مع الكابتن — Chat')">
-                    <img src="01_customer_app/13_chat_with_driver.png" alt="Chat with Driver">
-                </div>
-            </div>
-            <div class="step-info">
-                <h3>المحادثة مع الكابتن</h3>
-                <h4>Chat with Driver</h4>
-                <p>شات مباشر مع الكابتن بتصميم زي الواتساب — فقاعات برتقالية للمرسل ورمادية للمستقبل، مع ردود سريعة جاهزة.</p>
-                <ul class="step-features">
-                    <li>محادثة فورية</li>
-                    <li>ردود سريعة: "فين بالظبط؟"</li>
-                    <li>صورة واسم الكابتن</li>
-                    <li>تصميم واتساب ستايل</li>
-                </ul>
-            </div>
+        <div class="journey-step"><div class="step-number">13</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/13_chat_with_driver.png','المحادثة')"><img src="01_customer_app/13_chat_with_driver.png" alt=""></div></div>
+            <div class="step-info"><h3>المحادثة مع الكابتن</h3><h4>Chat with Driver</h4><p>شات مباشر — فقاعات برتقالية ورمادية مع ردود سريعة جاهزة.</p>
+            <ul class="step-features"><li>محادثة فورية</li><li>ردود سريعة</li><li>اتصال مباشر</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">14</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('01_customer_app/14_notifications.png','الإشعارات')"><img src="01_customer_app/14_notifications.png" alt=""></div></div>
+            <div class="step-info"><h3>الإشعارات</h3><h4>Notifications</h4><p>إشعارات الرحلات والعروض والتحديثات مع فلاتر (الكل، الرحلات، العروض، النظام).</p>
+            <ul class="step-features"><li>فلاتر حسب النوع</li><li>عروض وخصومات</li><li>تحديثات الرحلات</li><li>تحديثات النظام</li></ul></div>
         </div>
 
     </div>
 </section>
 
-<!-- =========================================================== -->
-<!-- ===== ADMIN DASHBOARD ===== -->
-<!-- =========================================================== -->
+<!-- ============================================== -->
+<!-- DRIVER APP — 14 screens -->
+<!-- ============================================== -->
+<section class="section" id="driver">
+    <div class="section-header">
+        <span class="section-tag tag-green">Driver App</span>
+        <h2>تطبيق الكابتن</h2>
+        <p>14 شاشة تغطي رحلة الكابتن من التسجيل وحتى استلام الأرباح</p>
+    </div>
+    <div class="journey">
+
+        <div class="journey-step"><div class="step-number">1</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/01_driver_login.png','تسجيل دخول الكابتن')"><img src="04_driver_app/01_driver_login.png" alt=""></div></div>
+            <div class="step-info"><h3>تسجيل دخول الكابتن</h3><h4>Driver Login</h4><p>تسجيل الدخول برقم الموبايل +20 مع خيار "سجّل كابتن جديد" ودعم 24/7.</p>
+            <ul class="step-features"><li>رقم الموبايل +20</li><li>تسجيل كابتن جديد</li><li>أيقونة Waslni Benha</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">2</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/02_registration_step1_personal.png','تسجيل كابتن — الخطوة 1')"><img src="04_driver_app/02_registration_step1_personal.png" alt=""></div></div>
+            <div class="step-info"><h3>تسجيل كابتن — البيانات الشخصية</h3><h4>Registration Step 1</h4><p>الخطوة 1 من 4 — الاسم، رقم الهاتف، وصورة بطاقة الرقم القومي (أمام وخلف).</p>
+            <ul class="step-features"><li>الاسم بالكامل</li><li>رقم الهاتف</li><li>صورة البطاقة (أمام + خلف)</li><li>شريط تقدم 4 خطوات</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">3</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/03_registration_step2_car.png','تسجيل كابتن — بيانات السيارة')"><img src="04_driver_app/03_registration_step2_car.png" alt=""></div></div>
+            <div class="step-info"><h3>تسجيل كابتن — بيانات السيارة</h3><h4>Registration Step 2</h4><p>الخطوة 2 — فئة السيارة (Premium/Business/Economy)، الموديل، سنة الصنع، اللون، رقم اللوحة، وصور من 4 جهات.</p>
+            <ul class="step-features"><li>فئة السيارة</li><li>الموديل واللون واللوحة</li><li>صور من 4 جهات</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">4</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/04_registration_step3_documents.png','تسجيل كابتن — المستندات')"><img src="04_driver_app/04_registration_step3_documents.png" alt=""></div></div>
+            <div class="step-info"><h3>تسجيل كابتن — المستندات الرسمية</h3><h4>Registration Step 3</h4><p>الخطوة 3 — رخصة القيادة (أمام + خلف)، تاريخ الانتهاء، الفيش الجنائي. ثم "إرسال للمراجعة".</p>
+            <ul class="step-features"><li>رخصة القيادة</li><li>الفيش والتشبيه</li><li>إرسال للمراجعة</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">5</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/05_driver_home.png','الصفحة الرئيسية للكابتن')"><img src="04_driver_app/05_driver_home.png" alt=""></div></div>
+            <div class="step-info"><h3>الصفحة الرئيسية للكابتن</h3><h4>Driver Home</h4><p>توغل متاح/غير متاح، إحصائيات اليوم (أرباح، رحلات، تقييم)، وخريطة الموقع الحالي مع "في انتظار طلبات..."</p>
+            <ul class="step-features"><li>توغل متاح / غير متاح</li><li>أرباح اليوم: 450 ج.م</li><li>رحلات اليوم: 7</li><li>خريطة بنها المباشرة</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">6</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/06_new_trip_request.png','طلب رحلة جديدة')"><img src="04_driver_app/06_new_trip_request.png" alt=""></div></div>
+            <div class="step-info"><h3>طلب رحلة جديدة</h3><h4>New Trip Request Popup</h4><p>إشعار عاجل بطلب رحلة — من وإلى، المسافة، السعر، عداد تنازلي 35 ثانية، وأزرار قبول/رفض.</p>
+            <ul class="step-features"><li>عداد تنازلي 35 ثانية</li><li>المسار والمسافة والسعر</li><li>خريطة المعاينة</li><li>قبول / رفض</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">7</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/07_navigate_to_pickup.png','التوجه لنقطة الالتقاط')"><img src="04_driver_app/07_navigate_to_pickup.png" alt=""></div></div>
+            <div class="step-info"><h3>التوجه لنقطة الالتقاط</h3><h4>Navigate to Pickup</h4><p>خريطة ملاحة للوصول للعميل — ETA، عنوان الالتقاط، اتصال ومحادثة، وزرار "وصلت لنقطة الالتقاط".</p>
+            <ul class="step-features"><li>ملاحة مباشرة</li><li>اتصل / محادثة</li><li>وصلت لنقطة الالتقاط</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">8</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/08_trip_in_progress.png','الرحلة جارية')"><img src="04_driver_app/08_trip_in_progress.png" alt=""></div></div>
+            <div class="step-info"><h3>الرحلة جارية</h3><h4>Trip In Progress</h4><p>جاري التوصيل — ملاحة turn-by-turn، الوجهة (محطة القطر)، المسافة المتبقية، الأجرة المقدرة، وزرار "أنهي الرحلة".</p>
+            <ul class="step-features"><li>ملاحة turn-by-turn</li><li>الوجهة والمسافة المتبقية</li><li>الأجرة: 45 ج.م</li><li>أنهي الرحلة / بلاغ</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">9</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/09_trip_completed.png','تمت الرحلة بنجاح')"><img src="04_driver_app/09_trip_completed.png" alt=""></div></div>
+            <div class="step-info"><h3>تمت الرحلة بنجاح</h3><h4>Trip Completed</h4><p>ملخص الرحلة — المسار، المسافة (4.2 كم)، الوقت (12 دقيقة)، التكلفة (35 ج.م)، صافي الأرباح (29.75 ج.م)، وزرار "متاح للطلب التالي".</p>
+            <ul class="step-features"><li>صافي الأرباح بعد العمولة</li><li>ملخص الرحلة</li><li>متاح للطلب التالي</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">10</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/10_driver_earnings.png','أرباح الكابتن')"><img src="04_driver_app/10_driver_earnings.png" alt=""></div></div>
+            <div class="step-info"><h3>أرباح الكابتن</h3><h4>Driver Earnings</h4><p>أرباح اليوم (450 ج.م)، إجمالي الشهر (8,450 ج.م)، تقييم 4.9، رسم بياني أسبوعي، وقائمة آخر الرحلات بالتفصيل.</p>
+            <ul class="step-features"><li>أرباح اليوم والشهر</li><li>رسم بياني أسبوعي</li><li>تفاصيل كل رحلة</li><li>فلاتر: يوم/أسبوع/شهر</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">11</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/11_driver_profile.png','ملف الكابتن')"><img src="04_driver_app/11_driver_profile.png" alt=""></div></div>
+            <div class="step-info"><h3>ملف الكابتن</h3><h4>Driver Profile</h4><p>الصورة والبيانات، إحصائيات (342 رحلة، 94% قبول، 4.8 تقييم)، بيانات العربية، وحالة المستندات.</p>
+            <ul class="step-features"><li>تقييم 4.8 ونسبة قبول 94%</li><li>بيانات السيارة واللوحة</li><li>حالة المستندات</li><li>تسجيل الخروج</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">12</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/12_chat_with_customer.png','المحادثة مع العميل')"><img src="04_driver_app/12_chat_with_customer.png" alt=""></div></div>
+            <div class="step-info"><h3>المحادثة مع العميل</h3><h4>Chat with Customer</h4><p>شات مباشر مع العميل — ردود سريعة "أنا في الطريق"، "وصلت"، "استنى دقيقة"، واتصال مباشر.</p>
+            <ul class="step-features"><li>فقاعات برتقالية ورمادية</li><li>ردود سريعة جاهزة</li><li>اتصال مباشر</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">13</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/13_driver_notifications.png','إشعارات الكابتن')"><img src="04_driver_app/13_driver_notifications.png" alt=""></div></div>
+            <div class="step-info"><h3>إشعارات الكابتن</h3><h4>Driver Notifications</h4><p>طلبات رحلات، تقييمات، تحويلات مالية، رسائل الإدارة، وتنبيهات الحساب.</p>
+            <ul class="step-features"><li>طلب رحلة جديد</li><li>تقييم جديد</li><li>تحويل مالي</li><li>تنبيه الحساب</li></ul></div>
+        </div>
+
+        <div class="journey-step"><div class="step-number">14</div>
+            <div class="step-phone"><div class="phone-frame" onclick="openLightbox('04_driver_app/14_trip_history.png','سجل رحلات الكابتن')"><img src="04_driver_app/14_trip_history.png" alt=""></div></div>
+            <div class="step-info"><h3>سجل رحلات الكابتن</h3><h4>Driver Trip History</h4><p>كل الرحلات السابقة بالتفصيل — التاريخ، المسار، السعر، الكابتن، والتقييم. مع مستوى العضوية (ذهبي).</p>
+            <ul class="step-features"><li>سجل رحلات مفصل</li><li>فلاتر زمنية</li><li>مستوى العضوية</li><li>إجمالي الرحلات</li></ul></div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================== -->
+<!-- ADMIN DASHBOARD — 12 screens -->
+<!-- ============================================== -->
 <section class="section" id="admin">
     <div class="section-header">
-        <span class="section-tag">Admin Dashboard</span>
+        <span class="section-tag" style="background:rgba(156,39,176,0.15);border-color:rgba(156,39,176,0.3);color:#CE93D8">Admin Dashboard</span>
         <h2>لوحة تحكم الأدمن</h2>
-        <p>5 شاشات لإدارة الكباتن والرحلات والمالية في الوقت الحقيقي</p>
+        <p>12 شاشة لإدارة الكباتن والرحلات والمالية في الوقت الحقيقي</p>
     </div>
+    <div class="card-grid">
 
-    <div class="admin-grid">
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/06_admin_login.png" onclick="openLightbox('02_admin_dashboard/06_admin_login.png','تسجيل دخول الأدمن')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">01</span><h3>تسجيل دخول الأدمن</h3><h4>Admin Login</h4><p>تسجيل دخول بيوزرنيم وباسورد مع شعار EliteRide Benha. النظام متاح 24/7.</p></div></div>
 
-        <!-- Admin 1: Dashboard Home -->
-        <div class="admin-card">
-            <div class="admin-card-img">
-                <img src="02_admin_dashboard/01_admin_dashboard_home.png" alt="Admin Dashboard Home"
-                     onclick="openLightbox('02_admin_dashboard/01_admin_dashboard_home.png', 'لوحة التحكم الرئيسية')"
-                     style="cursor: pointer;">
-            </div>
-            <div class="admin-card-body">
-                <span class="card-number">01</span>
-                <h3>لوحة التحكم الرئيسية</h3>
-                <h4>Dashboard Home</h4>
-                <p>نظرة عامة لحظية — عدد السائقين المتاحين (24)، الرحلات النشطة (8)، خريطة بنها المباشرة مع مواقع الكباتن، وفيد النشاط الأخير (رحلات جديدة، مكتملة، تنبيهات تأخير).</p>
-            </div>
-        </div>
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/01_admin_dashboard_home.png" onclick="openLightbox('02_admin_dashboard/01_admin_dashboard_home.png','لوحة التحكم الرئيسية')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">02</span><h3>لوحة التحكم الرئيسية</h3><h4>Dashboard Home</h4><p>24 سائق متاح، 8 رحلات نشطة، خريطة بنها المباشرة، وفيد النشاط الأخير.</p></div></div>
 
-        <!-- Admin 2: Incoming Requests -->
-        <div class="admin-card">
-            <div class="admin-card-img">
-                <img src="02_admin_dashboard/02_incoming_requests.png" alt="Incoming Requests"
-                     onclick="openLightbox('02_admin_dashboard/02_incoming_requests.png', 'الطلبات الواردة')"
-                     style="cursor: pointer;">
-            </div>
-            <div class="admin-card-body">
-                <span class="card-number">02</span>
-                <h3>الطلبات الواردة</h3>
-                <h4>Incoming Requests</h4>
-                <p>إدارة طلبات العملاء لحظياً — كل طلب فيه اسم العميل، المسار (من → إلى)، الوقت، وفئة VIP. مع زرار "تعيين يدوي" لاختيار الكابتن المناسب. بحث عن عميل أو وجهة معينة.</p>
-            </div>
-        </div>
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/02_incoming_requests.png" onclick="openLightbox('02_admin_dashboard/02_incoming_requests.png','الطلبات الواردة')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">03</span><h3>الطلبات الواردة</h3><h4>Incoming Requests</h4><p>طلبات العملاء لحظياً — اسم العميل، المسار، الوقت، فئة VIP، وزرار تعيين يدوي.</p></div></div>
 
-        <!-- Admin 3: Manual Driver Assignment -->
-        <div class="admin-card">
-            <div class="admin-card-img">
-                <img src="02_admin_dashboard/03_manual_driver_assignment.png" alt="Manual Assignment"
-                     onclick="openLightbox('02_admin_dashboard/03_manual_driver_assignment.png', 'تعيين كابتن يدوي')"
-                     style="cursor: pointer;">
-            </div>
-            <div class="admin-card-body">
-                <span class="card-number">03</span>
-                <h3>تعيين كابتن يدوي</h3>
-                <h4>Manual Driver Assignment</h4>
-                <p>اختيار الكابتن الأنسب للرحلة — قائمة بأقرب الكباتن مع المسافة، نوع العربية، التقييم، والفئة (Business/Premium/Economy). خريطة مباشرة توضح الموقع.</p>
-            </div>
-        </div>
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/03_manual_driver_assignment.png" onclick="openLightbox('02_admin_dashboard/03_manual_driver_assignment.png','تعيين كابتن يدوي')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">04</span><h3>تعيين كابتن يدوي</h3><h4>Manual Assignment</h4><p>أقرب الكباتن مع المسافة، العربية، التقييم، والفئة. خريطة مباشرة.</p></div></div>
 
-        <!-- Admin 4: Financial Overview -->
-        <div class="admin-card">
-            <div class="admin-card-img">
-                <img src="02_admin_dashboard/04_financial_overview.png" alt="Financial Overview"
-                     onclick="openLightbox('02_admin_dashboard/04_financial_overview.png', 'النظرة المالية')"
-                     style="cursor: pointer;">
-            </div>
-            <div class="admin-card-body">
-                <span class="card-number">04</span>
-                <h3>النظرة المالية</h3>
-                <h4>Financial Overview</h4>
-                <p>إجمالي الأرباح (128,450 ج.م)، العمولات المحصلة (19,267 ج.م)، متوسط الرحلة (103.5 ج.م). تحليل الإيرادات الأسبوعي بالرسوم البيانية، توزيع العمولات 15%، وعمليات الدفع المعلقة للكباتن.</p>
-            </div>
-        </div>
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/05_drivers_management.png" onclick="openLightbox('02_admin_dashboard/05_drivers_management.png','إدارة السائقين')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">05</span><h3>إدارة السائقين</h3><h4>Drivers Management</h4><p>كل الكباتن مع فلاتر (متصل/في رحلة/غير متصل)، بحث، وإضافة كابتن جديد.</p></div></div>
 
-        <!-- Admin 5: Drivers Management -->
-        <div class="admin-card">
-            <div class="admin-card-img">
-                <img src="02_admin_dashboard/05_drivers_management.png" alt="Drivers Management"
-                     onclick="openLightbox('02_admin_dashboard/05_drivers_management.png', 'إدارة السائقين')"
-                     style="cursor: pointer;">
-            </div>
-            <div class="admin-card-body">
-                <span class="card-number">05</span>
-                <h3>إدارة السائقين</h3>
-                <h4>Drivers Management</h4>
-                <p>قائمة كل الكباتن مع فلاتر (الكل، متصل، في رحلة، غير متصل). كل كابتن فيه صورته، اسمه، رقمه، رقم اللوحة، التقييم، وعدد الرحلات. بحث وإضافة كابتن جديد.</p>
-            </div>
-        </div>
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/07_driver_detail.png" onclick="openLightbox('02_admin_dashboard/07_driver_detail.png','تفاصيل الكابتن')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">06</span><h3>تفاصيل الكابتن</h3><h4>Driver Detail</h4><p>ملف كامل — صورة، بيانات، العربية، الوثائق الرسمية، سجل الرحلات، أرباح 15,400 ج.م، 1,240 رحلة.</p></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/08_active_trips.png" onclick="openLightbox('02_admin_dashboard/08_active_trips.png','الرحلات الجارية')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">07</span><h3>الرحلات الجارية</h3><h4>Active Trips</h4><p>24 كابتن متاح، 12 رحلة نشطة، تنبيهات عاجلة، وتفاصيل كل رحلة مع الخريطة.</p></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/09_trip_history_reports.png" onclick="openLightbox('02_admin_dashboard/09_trip_history_reports.png','سجل الرحلات والتقارير')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">08</span><h3>سجل الرحلات والتقارير</h3><h4>Trip History & Reports</h4><p>1,284 رحلة، إيرادات 45,600 ج.م، 42 سائق نشط، تصفية بالتاريخ والسائق، تصدير PDF/Excel.</p></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/04_financial_overview.png" onclick="openLightbox('02_admin_dashboard/04_financial_overview.png','النظرة المالية')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">09</span><h3>النظرة المالية</h3><h4>Financial Overview</h4><p>128,450 ج.م إجمالي الأرباح، 19,267 ج.م عمولات، رسوم بيانية أسبوعية، عمليات دفع معلقة.</p></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/10_customers_management.png" onclick="openLightbox('02_admin_dashboard/10_customers_management.png','إدارة العملاء')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">10</span><h3>إدارة العملاء</h3><h4>Customers Management</h4><p>1,248 عميل، 142 نشط الآن، 24 جديد هذا الأسبوع. بحث بالاسم/الرقم، فلاتر VIP.</p></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/11_notifications_center.png" onclick="openLightbox('02_admin_dashboard/11_notifications_center.png','مركز الإشعارات')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">11</span><h3>مركز الإشعارات</h3><h4>Notifications Center</h4><p>إرسال إشعار للجميع/السائقين/العملاء/VIP، عنوان ونص الرسالة، جدولة الإرسال، وسجل المرسلة.</p></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="02_admin_dashboard/12_settings.png" onclick="openLightbox('02_admin_dashboard/12_settings.png','الإعدادات')" alt=""></div>
+        <div class="g-card-body"><span class="card-number">12</span><h3>الإعدادات</h3><h4>Settings</h4><p>تسعير (فتح عداد 15 ج.م، كيلومتر 4.5 ج.م)، عمولة 15%، نطاق التغطية (بنها/القاهرة/طوخ)، إدارة المشرفين.</p></div></div>
 
     </div>
 </section>
 
-<!-- =========================================================== -->
-<!-- ===== MISSING SCREENS ===== -->
-<!-- =========================================================== -->
-<section class="section" id="missing">
+<!-- ============================================== -->
+<!-- ALTERNATE VERSIONS — 17 screens -->
+<!-- ============================================== -->
+<section class="section" id="alternates">
     <div class="section-header">
-        <span class="section-tag" style="background: rgba(229, 57, 53, 0.15); border-color: rgba(229, 57, 53, 0.3); color: #E53935;">Pending</span>
-        <h2>الشاشات المتبقية</h2>
-        <p>الشاشات دي لسه مطلوبة من المصمم عشان التطبيق يكمل</p>
+        <span class="section-tag" style="background:rgba(255,193,7,0.15);border-color:rgba(255,193,7,0.3);color:#FFC107">Alternate Versions</span>
+        <h2>نسخ بديلة</h2>
+        <p>17 نسخة بديلة ومتطورة للشاشات — تصاميم مختلفة لنفس الوظائف</p>
     </div>
+    <div class="card-grid">
 
-    <!-- Missing Customer -->
-    <div class="missing-section">
-        <h3>تطبيق العميل — شاشة متبقية</h3>
-        <div class="missing-grid">
-            <div class="missing-item"><span class="dot"></span>الإشعارات (Notifications)</div>
-        </div>
-    </div>
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_login_v2.png" onclick="openLightbox('05_alternate_versions/admin_login_v2.png','تسجيل أدمن — نسخة Waslni Benha')" alt=""></div>
+        <div class="g-card-body"><h3>تسجيل أدمن v2</h3><h4>Waslni Benha Branded Login</h4></div></div>
 
-    <!-- Missing Driver App -->
-    <div class="missing-section" style="margin-top: 24px;">
-        <h3>تطبيق الكابتن — 11 شاشة متبقية (التطبيق كامل)</h3>
-        <div class="missing-grid">
-            <div class="missing-item"><span class="dot"></span>تسجيل دخول الكابتن</div>
-            <div class="missing-item"><span class="dot"></span>تسجيل كابتن جديد (4 خطوات)</div>
-            <div class="missing-item"><span class="dot"></span>الصفحة الرئيسية للكابتن</div>
-            <div class="missing-item"><span class="dot"></span>طلب رحلة جديدة (Popup)</div>
-            <div class="missing-item"><span class="dot"></span>التوجه لنقطة الالتقاط</div>
-            <div class="missing-item"><span class="dot"></span>الرحلة جارية — جانب الكابتن</div>
-            <div class="missing-item"><span class="dot"></span>انتهاء الرحلة — جانب الكابتن</div>
-            <div class="missing-item"><span class="dot"></span>أرباح الكابتن</div>
-            <div class="missing-item"><span class="dot"></span>ملف الكابتن</div>
-            <div class="missing-item"><span class="dot"></span>المحادثة مع العميل</div>
-            <div class="missing-item"><span class="dot"></span>إشعارات الكابتن</div>
-        </div>
-    </div>
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_login_v2.png" onclick="openLightbox('05_alternate_versions/driver_login_v2.png','تسجيل كابتن — EliteRide + بصمة')" alt=""></div>
+        <div class="g-card-body"><h3>تسجيل كابتن v2</h3><h4>Biometrics Login</h4></div></div>
 
-    <!-- Missing Admin -->
-    <div class="missing-section" style="margin-top: 24px;">
-        <h3>لوحة تحكم الأدمن — 7 شاشات متبقية</h3>
-        <div class="missing-grid">
-            <div class="missing-item"><span class="dot"></span>تسجيل دخول الأدمن</div>
-            <div class="missing-item"><span class="dot"></span>تفاصيل الكابتن (Driver Detail)</div>
-            <div class="missing-item"><span class="dot"></span>الرحلات الجارية (Active Trips)</div>
-            <div class="missing-item"><span class="dot"></span>سجل الرحلات والتقارير</div>
-            <div class="missing-item"><span class="dot"></span>إدارة العملاء</div>
-            <div class="missing-item"><span class="dot"></span>مركز الإشعارات</div>
-            <div class="missing-item"><span class="dot"></span>الإعدادات (أسعار، عمولات، منطقة الخدمة)</div>
-        </div>
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_home_v2.png" onclick="openLightbox('05_alternate_versions/driver_home_v2.png','الرئيسية كابتن — رادار')" alt=""></div>
+        <div class="g-card-body"><h3>رئيسية الكابتن v2</h3><h4>Radar Home</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_navigate_pickup_v2.png" onclick="openLightbox('05_alternate_versions/driver_navigate_pickup_v2.png','ملاحة الالتقاط v2')" alt=""></div>
+        <div class="g-card-body"><h3>ملاحة الالتقاط v2</h3><h4>Navigate Pickup v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_trip_progress_v2.png" onclick="openLightbox('05_alternate_versions/driver_trip_progress_v2.png','الرحلة جارية v2')" alt=""></div>
+        <div class="g-card-body"><h3>الرحلة جارية v2</h3><h4>Trip Progress v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_trip_completed_v2.png" onclick="openLightbox('05_alternate_versions/driver_trip_completed_v2.png','تمت الرحلة v2 — مع خريطة')" alt=""></div>
+        <div class="g-card-body"><h3>تمت الرحلة v2</h3><h4>Completed with Map</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_earnings_v2.png" onclick="openLightbox('05_alternate_versions/driver_earnings_v2.png','أرباح الكابتن v2')" alt=""></div>
+        <div class="g-card-body"><h3>أرباح الكابتن v2</h3><h4>Detailed Earnings</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_profile_v2.png" onclick="openLightbox('05_alternate_versions/driver_profile_v2.png','ملف الكابتن v2 — EliteRide')" alt=""></div>
+        <div class="g-card-body"><h3>ملف الكابتن v2</h3><h4>EliteRide Profile</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/chat_v2.png" onclick="openLightbox('05_alternate_versions/chat_v2.png','المحادثة v2')" alt=""></div>
+        <div class="g-card-body"><h3>المحادثة v2</h3><h4>Chat v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/customer_notifications_v2.png" onclick="openLightbox('05_alternate_versions/customer_notifications_v2.png','إشعارات العميل v2')" alt=""></div>
+        <div class="g-card-body"><h3>إشعارات العميل v2</h3><h4>Customer Notifications v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/driver_notifications_v2.png" onclick="openLightbox('05_alternate_versions/driver_notifications_v2.png','إشعارات الكابتن v2')" alt=""></div>
+        <div class="g-card-body"><h3>إشعارات الكابتن v2</h3><h4>Driver Notifications v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_driver_detail_v2.png" onclick="openLightbox('05_alternate_versions/admin_driver_detail_v2.png','تفاصيل كابتن v2')" alt=""></div>
+        <div class="g-card-body"><h3>تفاصيل كابتن v2</h3><h4>Admin Driver Detail v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_active_trips_v2.png" onclick="openLightbox('05_alternate_versions/admin_active_trips_v2.png','رحلات جارية v2 — قائمة')" alt=""></div>
+        <div class="g-card-body"><h3>رحلات جارية v2</h3><h4>Active Trips List View</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_trip_history_v2.png" onclick="openLightbox('05_alternate_versions/admin_trip_history_v2.png','سجل الرحلات v2')" alt=""></div>
+        <div class="g-card-body"><h3>سجل الرحلات v2</h3><h4>Trip History v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_customers_v2.png" onclick="openLightbox('05_alternate_versions/admin_customers_v2.png','إدارة العملاء v2')" alt=""></div>
+        <div class="g-card-body"><h3>إدارة العملاء v2</h3><h4>Customers v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_notifications_v2.png" onclick="openLightbox('05_alternate_versions/admin_notifications_v2.png','مركز الإشعارات v2')" alt=""></div>
+        <div class="g-card-body"><h3>مركز الإشعارات v2</h3><h4>Notifications v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_settings_v2.png" onclick="openLightbox('05_alternate_versions/admin_settings_v2.png','الإعدادات v2')" alt=""></div>
+        <div class="g-card-body"><h3>الإعدادات v2</h3><h4>Settings v2</h4></div></div>
+
+        <div class="g-card"><div class="g-card-img"><img src="05_alternate_versions/admin_trip_request_v2.png" onclick="openLightbox('05_alternate_versions/admin_trip_request_v2.png','طلب رحلة أدمن v2')" alt=""></div>
+        <div class="g-card-body"><h3>طلب رحلة أدمن v2</h3><h4>Admin Trip Request v2</h4></div></div>
+
     </div>
 </section>
 
-<!-- ===== FOOTER ===== -->
+<!-- FOOTER -->
 <footer class="footer">
     <p>وصلني بنها — بنها، القليوبية، مصر | <a href="tel:01029188887">01029188887</a></p>
-    <p style="margin-top: 8px;">تم تصميم 18 شاشة من أصل 37 شاشة مطلوبة</p>
+    <p style="margin-top:8px">57 شاشة مصممة — 14 عميل + 14 كابتن + 12 أدمن + 17 نسخة بديلة</p>
 </footer>
 
-<!-- ===== SCRIPTS ===== -->
+<!-- SCRIPTS -->
 <script>
-    function openLightbox(src, caption) {
-        const overlay = document.getElementById('lightbox');
-        const img = document.getElementById('lightbox-img');
-        const cap = document.getElementById('lightbox-caption');
-        img.src = src;
-        cap.textContent = caption;
-        overlay.classList.add('active');
-        document.body.style.overflow = 'hidden';
-    }
-
-    function closeLightbox() {
-        document.getElementById('lightbox').classList.remove('active');
-        document.body.style.overflow = '';
-    }
-
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') closeLightbox();
-    });
-
-    // Scroll-based nav highlighting
-    const sections = document.querySelectorAll('.section[id]');
-    const navLinks = document.querySelectorAll('.nav-link');
-
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const rect = section.getBoundingClientRect();
-            if (rect.top <= 200) current = section.id;
-        });
-        navLinks.forEach(link => {
-            link.classList.remove('active');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active');
-            }
-        });
-    });
+function openLightbox(s,c){const o=document.getElementById('lightbox');document.getElementById('lightbox-img').src=s;document.getElementById('lightbox-caption').textContent=c;o.classList.add('active');document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('active');document.body.style.overflow=''}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox()});
+const secs=document.querySelectorAll('.section[id]'),navs=document.querySelectorAll('.nav-link');
+window.addEventListener('scroll',()=>{let c='';secs.forEach(s=>{if(s.getBoundingClientRect().top<=200)c=s.id});navs.forEach(n=>{n.classList.remove('active');if(n.getAttribute('href')==='#'+c)n.classList.add('active')})});
 </script>
-
 </body>
 </html>
